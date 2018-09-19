@@ -4,6 +4,7 @@
  * https://github.com/chjj/marked
  */
 
+
 (function () {
     var block = {
         newline: /^\n+/,
