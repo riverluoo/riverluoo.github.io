@@ -1,3 +1,5 @@
-# 环富阳 
-![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/IMG_0357.jpg)
+有一个夜晚我烧毁了所有的记忆<br>
+从此我的梦就透明了<br>
+有一个早晨我扔掉了所有的昨天<br>
+从此我的脚步就轻盈了
 
