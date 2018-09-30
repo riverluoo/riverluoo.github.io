@@ -1,1 +1,1 @@
-## [centos](#/node/centos)
+## [centos](#/note/centos)
