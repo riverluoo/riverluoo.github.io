@@ -1,1 +1,2 @@
-## [centos](#/note/centos)
+- [centos](#/note/centos)
+- [环富阳](#/blog/2018-09-16-环富阳)
