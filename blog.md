@@ -1,3 +1,4 @@
 - [centos](#/note/centos)
 - [环富阳](#/blog/2018-09-16-环富阳)
 - [环崇明](#/blog/2018-09-24.环崇明)
+- [当四十岁的你回望二十岁的自己](http://reader.s-reader.com/article/c0/3568443.html?l=02a1db025d5e393f681d8fef9af78bee&ft_size=&site_id=616)
