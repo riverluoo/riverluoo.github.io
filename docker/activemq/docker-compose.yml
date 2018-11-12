@@ -10,9 +10,6 @@ services:
       - '8161:8161'
       - '61616:61616'
       - '61613:61613'
-volumes:
-  data:
-  log:
 networks:
   default:
     external:
