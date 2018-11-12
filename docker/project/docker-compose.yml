@@ -1,5 +1,15 @@
 version: '3'
 services:
+  nginx:
+      restart: always
+      image: nginx:1.13
+      ports:
+        - 80:80
+        - 443:443
+      volumes:
+        - ./nginx/logs:/usr/local/nginx/logs
+        - ./nginx/nginx.conf:/usr/local/nginx/conf/nginx.conf:ro
+        - ./nginx/conf.d/:/usr/local/nginx/conf.d/:ro
   activemq:
     image: webcenter/activemq
     container_name: activemq
