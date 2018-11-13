@@ -64,6 +64,38 @@ pip install docker-compose --ignore-installed requests
 docker-compose -version
 ~~~
 
+# 安装nodejs
+
+## 下载nodejs
+- 版本选择
+~~~
+https://npm.taobao.org/mirrors/node
+~~~
+- 下载
+~~~
+wget https://npm.taobao.org/mirrors/node/v8.0.0/node-v8.0.0-linux-x64.tar.xz
+~~~
+## 解压
+~~~
+tar -xvf  node-v8.0.0-linux-x64.tar.xz
+~~~
+
+## 软链接到全局
+~~~
+ln -s /node-v8.0.0-linux-x64/bin/node /usr/bin/node
+ln -s /node-v8.0.0-linux-x64/bin/npm /usr/bin/npm
+~~~
+
+## 安装pm2
+~~~
+npm install -g pm2
+~~~
+
+## 软链接到全局
+~~~
+ln -s /node-v8.0.0-linux-x64/bin/pm2 /usr/bin/pm2
+~~~
+
 # 安装jdk
 
 ~~~
@@ -73,15 +105,4 @@ vim /etc/profile
 export JAVA_HOME=/opt/jdk-11
 export CLASSPATH=.:${JAVA_HOME}/jre/lib/rt.jar:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
 export PATH=$PATH:${JAVA_HOME}/bin
-~~~
-
-~~~
-sudo firewall-cmd --zone=public --permanent --add-port=4369/tcp --add-port=25672/tcp --add-port=5671-5672/tcp --add-port=15672/tcp  --add-port=61613-61614/tcp --add-port=1883/tcp --add-port=8883/tcp
-sudo firewall-cmd --reload
-~~~
-
-~~~
-sudo rabbitmqctl add_user mqadmin mqadminpassword
-sudo rabbitmqctl set_user_tags mqadmin administrator
-sudo rabbitmqctl set_permissions -p / mqadmin ".*" ".*" ".*"
 ~~~
