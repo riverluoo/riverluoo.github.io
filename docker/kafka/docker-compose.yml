@@ -1,0 +1,17 @@
+version: '3'
+services:
+  kafka:
+    restart: always
+    container_name: kafka
+    image: wurstmeister/kafka
+    ports:
+      - 9092:9092 
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: zookeeper
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+networks:
+  default:
+    external:
+      name: docker-network
