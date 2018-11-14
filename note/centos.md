@@ -75,6 +75,7 @@ https://npm.taobao.org/mirrors/node
 ~~~
 wget https://npm.taobao.org/mirrors/node/v8.0.0/node-v8.0.0-linux-x64.tar.xz
 ~~~
+
 ## 解压
 ~~~
 tar -xvf  node-v8.0.0-linux-x64.tar.xz
