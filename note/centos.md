@@ -42,7 +42,7 @@ sudo systemctl enable docker
 docker version
 ~~~
 
-# 安装 docker-compose
+# 安装docker-compose
 ## 安装 python-pip
 ~~~
 yum -y install epel-release
@@ -55,7 +55,7 @@ pip -V
 ~~~
 pip install --upgrade pip
 ~~~
-## 安装 docker-compose
+## 安装docker-compose
 ~~~
 pip install docker-compose --ignore-installed requests 
 ~~~
