@@ -1,4 +1,4 @@
-- [centos](#/note/centos)
+- [centos](#/note/linux/centos)
 - [环富阳](#/blog/2018-09-16-环富阳)
 - [环崇明](#/blog/2018-09-24.环崇明)
 - [环桐乡](#/blog/2018-11-09-环桐乡)
