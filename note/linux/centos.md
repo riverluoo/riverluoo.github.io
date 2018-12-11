@@ -145,3 +145,26 @@ export JAVA_HOME=/opt/jdk-11
 export CLASSPATH=.:${JAVA_HOME}/jre/lib/rt.jar:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
 export PATH=$PATH:${JAVA_HOME}/bin
 ```
+# oh-my-zsh
+
+## zsh
+~~~
+yum install zsh -y
+~~~
+
+## oh-my-zsh
+~~~
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+~~~
+
+## theme
+~~~
+vim .zshrc
+
+ZSH_THEME="sunrise"
+~~~
+
+## default shell
+~~~
+chsh -s /bin/zsh
+~~~

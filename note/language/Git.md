@@ -1,6 +1,14 @@
-# 一、Git 命令一览
+# 一、git 服务器
 
-[详细地址](http://www.cheat-sheets.org/saved-copy/git-cheat-sheet.pdf)
+## 初始仓库
+~~~
+git init --bare test.git
+~~~
+## 服务端密码
+~~~
+passwd git
+~~~
+
 
 # 二、添加不同远程仓库
 
