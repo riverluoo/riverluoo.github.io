@@ -19,5 +19,15 @@ REST 全称是 Representational State Transfer 中文含义为表现层状态转
 
 ## 二、 为什么使用RESTful
 
+* 接口抽象
+RESTful 服务使用标准的 HTTP 方法 (GET/PUT/POST/DELETE) 来抽象所有 Web 系统的服务能力
+* 无状态性
+HTTP 协议从本质上说是一种无状态的协议，客户端发出的 HTTP 请求之间可以相互隔离，不存在相互的状态依赖
+
 
 ## 三、 怎样使用RESTful
+
+## 四、 版本演进
+* 1: 在uri中 GET /v1/user
+* 2: Accept Header：Accept: application/json+v1
+* 3: 自定义 Header：X-Api-Version: 1
