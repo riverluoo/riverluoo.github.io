@@ -1,4 +1,4 @@
 ## Create a network
 ~~~
-docker network create docker-networ
+docker network create docker-network
 ~~~
