@@ -7,4 +7,3 @@
 - [当四十岁的你回望二十岁的自己](http://reader.s-reader.com/article/c0/3568443.html?l=02a1db025d5e393f681d8fef9af78bee&ft_size=&site_id=616)
 - [从低谷爬出——记录我的恢复经历](https://sspai.com/post/47447)
 - [闭环，影响一生的原则](https://mp.weixin.qq.com/s/uqfjYOj9oqqFhSpB91m7eg)
-- [存在感](https://mp.weixin.qq.com/s/9uAVkIsH9OySyZ5O70VYzA)
