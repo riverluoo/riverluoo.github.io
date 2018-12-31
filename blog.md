@@ -4,6 +4,7 @@
 - [环崇明](#/blog/2018-09-24.环崇明)
 - [环桐乡](#/blog/2018-11-09-环桐乡)
 - [环嘉兴](#/blog/2018-11-25-环嘉兴)
+- [我的2018年](#/blog/我的2018年)
 - [当四十岁的你回望二十岁的自己](http://reader.s-reader.com/article/c0/3568443.html?l=02a1db025d5e393f681d8fef9af78bee&ft_size=&site_id=616)
 - [从低谷爬出——记录我的恢复经历](https://sspai.com/post/47447)
 - [闭环，影响一生的原则](https://mp.weixin.qq.com/s/uqfjYOj9oqqFhSpB91m7eg)
