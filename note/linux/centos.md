@@ -145,26 +145,82 @@ export JAVA_HOME=/opt/jdk-11
 export CLASSPATH=.:${JAVA_HOME}/jre/lib/rt.jar:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
 export PATH=$PATH:${JAVA_HOME}/bin
 ```
+
 # oh-my-zsh
 
 ## zsh
-~~~
+
+```
 yum install zsh -y
-~~~
+```
 
 ## oh-my-zsh
-~~~
+
+```
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-~~~
+```
 
 ## theme
-~~~
+
+```
 vim .zshrc
 
 ZSH_THEME="sunrise"
-~~~
+```
 
 ## default shell
-~~~
+
+```
 chsh -s /bin/zsh
-~~~
+```
+
+# nginx
+
+## gcc
+
+```
+yum install gcc-c++
+```
+
+## PCRE pcre-devel
+
+```
+yum install -y pcre pcre-devel
+```
+
+## zlib
+
+```
+yum install -y zlib zlib-devel
+```
+
+## OpenSSL
+
+```
+yum install -y openssl openssl-devel
+```
+
+## download
+
+```
+wget -c https://nginx.org/download/nginx-1.14.0.tar.gz
+```
+
+## unzip
+
+```
+tar -zxvf nginx-1.14.0.tar.gz
+```
+
+## https
+
+```
+./configure --with-http_ssl_module
+```
+
+## install
+
+```
+make
+make install
+```
