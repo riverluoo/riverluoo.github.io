@@ -94,18 +94,18 @@ CONCAT( DATE_FORMAT( NOW( ), '%Y' ), '-', MONTH ( consumption.create_time ) )
 
 ## 一、 week（）
 
-#### 是什么
+### 是什么
 
 [官方手册](https://dev.mysql.com/doc/refman/5.6/en/date-and-time-functions.html)
 ![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20190104124614.png)
 函数返回的是周数，可以使用两个参数，mode 可以省略，使用 default-week-format 系统变量的值
 
-#### 什么用
+### 什么用
 
 - 获取日期所在的周数
 - 数据按照周进行统计
 
-#### 如何使用
+### 如何使用
 
 - 如果包含 1 月 1 日的一周在新的一年中有 4 天或更多天，则为第 1 周
 - 否则，它是上一年的最后一周，下一周是第 1 周
@@ -148,3 +148,18 @@ CONCAT( DATE_FORMAT( NOW( ), '%Y' ), '-', MONTH ( consumption.create_time ) )
   SELECT WEEK('2017-01-01',1)
   - 0
   ```
+
+### 应用
+
+- 计算某一日期的周开始
+  ```sql
+  SELECT DATE_FORMAT(
+    ADDDATE(
+      MAKEDATE( DATE_FORMAT( '2019-01-08', '%Y' ), 1 ),
+      ( WEEK ( '2019-01-08', 7 ) - WEEK ( MAKEDATE( DATE_FORMAT( '2019-01-08', '%Y' ), 1 ), 5 ) ) * 7 - WEEKDAY( MAKEDATE( DATE_FORMAT( '2019-01-08', '%Y' ), 1 ) )
+    ),
+  '%Y-%m-%d'
+  )
+  ```
+- 周结束
+ 周开始加6天
