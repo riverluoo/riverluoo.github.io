@@ -56,3 +56,36 @@
 特殊类型
 
 - ref 表示对共享对象的引用
+
+## 负载均衡策略和高可用策略
+
+- random loadbalance
+  在默认情况下,dubbo 使用 random load balance 随机调用实现负载均衡，
+  可以对 provider 不同实例设置不同的权重，会按照权重大小分配流量
+
+- roundrobin loadbalance
+  均匀的将流量分到各个机器上去，如果各个机器的性能不一样，
+  容易导致性能查的机器负载过高，要调整权重，让机器性能差的机器承担的权重小一些
+
+- leastactive loadbalance
+  自动感知 某个机器的性能越差，那么接收的请求缺少，
+  越不活跃，接收的请求越少
+
+- consistanthash loadbalance
+  一致性 Hash 算法，相同参数请求一定分发到一个 provider 上去，provider 挂掉的时候，会基于虚拟节点均匀分配剩余的流量
+
+## 容错策略
+
+- failover cluster
+  失败自动切换，自动重试其他的机器，默认就是这个，常见于读操作
+- failfast cluster
+  一次调用失败就立即重试，常见写操作
+- failsafe cluster
+ 出现异常时忽略调，常见于不重要的接口调用
+- failback cluster
+ 失败了后台自动记录请求，然后定时重发
+- forking cluster
+ 并行调用了多个provider，只要一个成功就立即返回
+- broadcacst cluster
+ 逐个调用所用的provider
+
