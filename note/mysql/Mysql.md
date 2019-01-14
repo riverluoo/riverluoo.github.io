@@ -156,7 +156,7 @@ CONCAT( DATE_FORMAT( NOW( ), '%Y' ), '-', MONTH ( consumption.create_time ) )
   SELECT DATE_FORMAT(
     ADDDATE(
       MAKEDATE( DATE_FORMAT( '2019-01-08', '%Y' ), 1 ),
-      ( WEEK ( '2019-01-08', 7 ) - WEEK ( MAKEDATE( DATE_FORMAT( '2019-01-08', '%Y' ), 1 ), 5 ) ) * 7 - WEEKDAY( MAKEDATE( DATE_FORMAT( '2019-01-08', '%Y' ), 1 ) )
+      ( WEEK ( '2019-01-08', 5 ) - WEEK ( MAKEDATE( DATE_FORMAT( '2019-01-08', '%Y' ), 1 ), 5 ) ) * 7 - WEEKDAY( MAKEDATE( DATE_FORMAT( '2019-01-08', '%Y' ), 1 ) )
     ),
   '%Y-%m-%d'
   )
