@@ -1,6 +1,6 @@
 - [centos](#/note/linux/centos)
 - [git](#/note/language/Git)
-- [环富阳](#/bicycle/2018-09-16-环富阳.md)
+- [环富阳](#/bicycle/2018-09-16-环富阳)
 - [环崇明](#/bicycle/2018-09-24.环崇明)
 - [环桐乡](#/bicycle/2018-11-09-环桐乡)
 - [环嘉兴](#/bicycle/2018-11-25-环嘉兴)
