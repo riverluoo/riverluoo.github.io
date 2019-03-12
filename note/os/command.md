@@ -2,3 +2,8 @@
 
 - [Kafka Shell基本命令](https://my.oschina.net/u/3346994/blog/1861871) 
 
+## find
+~~~
+find / -name xx
+~~~
+
