@@ -1,3 +1,9 @@
+---
+title: java并发
+date: 2018-10-08
+layout: post
+---
+
 # 并发的历史
 
 - 资源利用

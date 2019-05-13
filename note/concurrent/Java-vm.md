@@ -1,3 +1,9 @@
+---
+title: java虚拟机
+date: 2018-10-09
+layout: post
+---
+
 # 一、 运行时数据区域
 
 ![](https://riverluooo.oss-cn-beijing.aliyuncs.com/jvm/540631a4-6018-40a5-aed7-081e2eeeaeea.png)
