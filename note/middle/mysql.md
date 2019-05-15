@@ -164,5 +164,122 @@ CONCAT( DATE_FORMAT( NOW( ), '%Y' ), '-', MONTH ( consumption.create_time ) )
 - 周结束
  周开始加6天
 
-## 索引
+# 3: explan
+
+要了解索引 先来了解下 explan
+
+- id
+  是一组数字，标示查询总的执行 select 或操作表的顺序
+
+```sql
+EXPLAIN SELECT
+	log.ip
+FROM
+	upms_log log
+	LEFT JOIN upms_user USER ON log.username = USER.username
+	LEFT JOIN upms_user_organization org ON USER.user_id = org.user_id
+ORDER BY
+	log.start_time DESC
+```
+
+id 相同，执行顺序由上至下
+
+![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20190507112719.png)
+
+```sql
+EXPLAIN SELECT
+	log.ip
+FROM
+	upms_log log
+	LEFT JOIN upms_user USER ON log.username = USER.username
+	LEFT JOIN upms_user_organization org ON USER.user_id = org.user_id
+WHERE
+	log.log_id = ( SELECT log_id FROM upms_log WHERE start_time = 1553060552013 );
+```
+
+有子查询，id 的序号会递增，id 值越大优先级越高，先被执行
+
+![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20190507131314.png)
+
+- select_type
+  a. simple : 查询中不包含子查询或者 union
+  b. primary : 查询中包含任何复杂的子查询，最外层查询标记
+  c. subquery : 在 select 或者 where 列表中包含子查询
+  d. derived : 用来表示包含在 from 子句中的子查询 select ,mysql 会递归执行，并将结果放到一个临时表中
+
+* type
+
+all , index , range. ref , eg_ref, const, system, null
+
+有左到右 性能从最差到最好
+
+all : mysql 将遍历全表已找到匹配的行
+index : 只遍历索引树
+range : 对索引的扫描开始与某一点，返回匹配值的行，是带有 between 或者 where 子局中带有< > ； mysql 中使用使用 IN（）和 OR
+ref : 使用非唯一索引扫描或者唯一的前缀扫描，返回匹配某个单独值的记录行
+eq_erf : 使用索引是唯一索引，对于每个索引健值，表中只有一条记录匹配
+const,system : mysql 对查询某部分进行优化，并转换为一个常量，使用这些类型访问，如将主键置于 where 列表中，mysql 就能将该查询转换为一个常量
+null : 执行时不用访问表或者索引，如从一个索引列里选取最小值可以通过单独索引查找完成
+
+- possible_keys
+  mysql 使用哪个索引在表中找到记录，查询涉及的字段若存在索引，则该索引将被列出，但不一定被查询使用
+
+- key
+  显示 mysql 中实际使用的索引，若没有索引，显示为 null
+
+- key_len
+ 标示索引中使用的字节数，可通过改列计算查询使用的索引长度,为最大可能长度，并非实际使用长度
+
+- ref 
+ 表示表的连接匹配条件，哪些列或者常量被用于查找索引列上的值
+
+- rows
+ 估算的找到所需记录所需要的行数
+
+- extra
+ 包含不适合在其他列中显示但十分重要的额外信息
+  a. Using index :使用了覆盖索引（Covering index）mysql利用索引返回select列表中的字段，不必根据索引再次读取数据文件
+  包含所有满足查询需要的数据的索引称为覆盖索引。使用覆盖索引,select列表中只取出需要的列,不可select*,如果将所有字段一起做索引
+  会导致索引文件过大，查询性能下降
+  
+  b. Using where ： mysql将在存储引擎检索后在进行过滤，许多wheret条件里涉及的列，当他读取索引时，就能被存储引擎检验。
+  c. Using temporary : 需要使用临时表来存储结果集，常见于排序和分组查询，常见的原因时使用了DISTINCT,或者使用order by 和group by 列
+  d. Using filesort ： 无法利用索引完成的排序 文件排序
+  e. Using join buffer : 在获取连接条件时 没有使用索引，并且需要连接缓冲区来存储中间结果，如果出现这个值，可能需要添加索引来改进
+  f. Impossible where : where语句会导致没有符合条件的行
+  g. Select tables optimized away : 仅通过使用索引，可以仅从聚合函数中返回一行
+
+
+# 4: 索引
+索引是一种特殊的文件，会占用物理存储空间
+
+a. 普通索引
+
+b. 唯一索引
+
+c. 全文索引
+
+d. 单列索引，多列索引
+
+e. 组合索引（最左前缀）
+
+# 5: 修改数据库和表字符集
+开发中遇到了不同表数据库字段的字符集编码方式不一致，导致部分索引失效的问题
+涉及的表众多，采用批量修改的方式
+~~~sql
+SELECT
+	 CONCAT('alter table ',a.table_name,' convert to character set utf8mb4 collate utf8mb4_general_ci;')
+FROM
+	( SELECT table_name FROM information_schema.`TABLES` WHERE TABLE_SCHEMA = 'lng2' ) a;
+~~~
+![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20190510140251.png)
+
+~~~sql
+alter table appointment convert to character set utf8mb4 collate utf8mb4_general_ci;
+alter table book convert to character set utf8mb4 collate utf8mb4_general_ci;
+alter table muser convert to character set utf8mb4 collate utf8mb4_general_ci;
+~~~
+
+
+
 

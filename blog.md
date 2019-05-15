@@ -1,10 +1,14 @@
 - [centos](#/note/linux/centos)
-- [git](#/note/language/Git)
+- [git](#/note/middle/git)
+----
 - [环富阳](#/bicycle/2018-09-16-fuyang)
 - [环崇明](#/bicycle/2018-09-24.chongming)
 - [环桐乡](#/bicycle/2018-11-09-tongxiang)
 - [环嘉兴](#/bicycle/2018-11-25-jiaxing)
+- [茅台镇](#/bicycle/maotai)
+----
 - [我的2018年](#/note/me/我的2018年)
+----
 - [当四十岁的你回望二十岁的自己](http://reader.s-reader.com/article/c0/3568443.html?l=02a1db025d5e393f681d8fef9af78bee&ft_size=&site_id=616)
 - [从低谷爬出——记录我的恢复经历](https://sspai.com/post/47447)
 - [闭环，影响一生的原则](https://mp.weixin.qq.com/s/uqfjYOj9oqqFhSpB91m7eg)
