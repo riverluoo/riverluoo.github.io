@@ -1,8 +1,3 @@
----
-title: 茅台镇之行
-date: 2019-04-05
-layout: post
----
 
 <center>嘉兴-上海虹桥</center>
 

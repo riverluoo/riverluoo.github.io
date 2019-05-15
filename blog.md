@@ -1,5 +1,7 @@
 > * [centos](#/note/linux/centos)
 > * [git](#/note/middle/git)
+> * [mysql](#/note/middle/mysql)
+> * [nginx](#/note/middle/nginx)
 
 ---
 
