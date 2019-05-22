@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://39.96.69.79:3306/blog_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: password
+      stat-view-servlet:
+        login-username: admin
+        login-password: admin
