@@ -1,4 +1,4 @@
-> * [centos](#/note/linux/centos)
+> * [centos](#/note/middle/centos)
 > * [git](#/note/middle/git)
 > * [mysql](#/note/middle/mysql)
 > * [nginx](#/note/middle/nginx)
