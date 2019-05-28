@@ -162,7 +162,7 @@ CONCAT( DATE_FORMAT( NOW( ), '%Y' ), '-', MONTH ( consumption.create_time ) )
   )
   ```
 - 周结束
- 周开始加6天
+  周开始加 6 天
 
 # 3: explan
 
@@ -228,29 +228,28 @@ null : 执行时不用访问表或者索引，如从一个索引列里选取最�
   显示 mysql 中实际使用的索引，若没有索引，显示为 null
 
 - key_len
- 标示索引中使用的字节数，可通过改列计算查询使用的索引长度,为最大可能长度，并非实际使用长度
+  标示索引中使用的字节数，可通过改列计算查询使用的索引长度,为最大可能长度，并非实际使用长度
 
-- ref 
- 表示表的连接匹配条件，哪些列或者常量被用于查找索引列上的值
+- ref
+  表示表的连接匹配条件，哪些列或者常量被用于查找索引列上的值
 
 - rows
- 估算的找到所需记录所需要的行数
+  估算的找到所需记录所需要的行数
 
 - extra
- 包含不适合在其他列中显示但十分重要的额外信息
-  a. Using index :使用了覆盖索引（Covering index）mysql利用索引返回select列表中的字段，不必根据索引再次读取数据文件
-  包含所有满足查询需要的数据的索引称为覆盖索引。使用覆盖索引,select列表中只取出需要的列,不可select*,如果将所有字段一起做索引
+  包含不适合在其他列中显示但十分重要的额外信息
+  a. Using index :使用了覆盖索引（Covering index）mysql 利用索引返回 select 列表中的字段，不必根据索引再次读取数据文件
+  包含所有满足查询需要的数据的索引称为覆盖索引。使用覆盖索引,select 列表中只取出需要的列,不可 select\*,如果将所有字段一起做索引
   会导致索引文件过大，查询性能下降
-  
-  b. Using where ： mysql将在存储引擎检索后在进行过滤，许多wheret条件里涉及的列，当他读取索引时，就能被存储引擎检验。
-  c. Using temporary : 需要使用临时表来存储结果集，常见于排序和分组查询，常见的原因时使用了DISTINCT,或者使用order by 和group by 列
+  b. Using where ： mysql 将在存储引擎检索后在进行过滤，许多 wheret 条件里涉及的列，当他读取索引时，就能被存储引擎检验。
+  c. Using temporary : 需要使用临时表来存储结果集，常见于排序和分组查询，常见的原因时使用了 DISTINCT,或者使用 order by 和 group by 列
   d. Using filesort ： 无法利用索引完成的排序 文件排序
   e. Using join buffer : 在获取连接条件时 没有使用索引，并且需要连接缓冲区来存储中间结果，如果出现这个值，可能需要添加索引来改进
-  f. Impossible where : where语句会导致没有符合条件的行
+  f. Impossible where : where 语句会导致没有符合条件的行
   g. Select tables optimized away : 仅通过使用索引，可以仅从聚合函数中返回一行
 
-
 # 4: 索引
+
 索引是一种特殊的文件，会占用物理存储空间
 
 a. 普通索引
@@ -264,22 +263,41 @@ d. 单列索引，多列索引
 e. 组合索引（最左前缀）
 
 # 5: 修改数据库和表字符集
+
 开发中遇到了不同表数据库字段的字符集编码方式不一致，导致部分索引失效的问题
 涉及的表众多，采用批量修改的方式
-~~~sql
+
+```sql
 SELECT
 	 CONCAT('alter table ',a.table_name,' convert to character set utf8mb4 collate utf8mb4_general_ci;')
 FROM
 	( SELECT table_name FROM information_schema.`TABLES` WHERE TABLE_SCHEMA = 'lng2' ) a;
-~~~
+```
+
 ![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20190510140251.png)
 
-~~~sql
+```sql
 alter table appointment convert to character set utf8mb4 collate utf8mb4_general_ci;
 alter table book convert to character set utf8mb4 collate utf8mb4_general_ci;
 alter table muser convert to character set utf8mb4 collate utf8mb4_general_ci;
-~~~
+```
 
+# count() 函数
 
+```sql
+SELECT
+	CONCAT( DATE_FORMAT( alarm.create_time, '%Y' ), '-', MONTH ( alarm.create_time ) ) AS month,
+	count( IF ( alarm.STATUS = 1, TRUE, NULL ) ) AS handled,
+	count( IF ( alarm.STATUS = 0, TRUE, NULL ) ) AS unhandled
+FROM
+	monitor_alarm alarm
+	LEFT JOIN station_basic station ON alarm.station_id = station.id
+	WHERE alarm.create_time IS NOT NULL
+GROUP BY
+	MONTH ( alarm.create_time )
+ORDER BY
+	alarm.create_time DESC;
+```
 
-
+-[function_count_官方文档](https://dev.mysql.com/doc/refman/5.6/en/group-by-functions.html#function_count)
+  
