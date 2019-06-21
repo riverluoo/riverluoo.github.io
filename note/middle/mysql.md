@@ -1,4 +1,4 @@
-## 按照 null 进行排序
+##  1: 按照 null 进行排序
 
 默认情况下 mysql 将 null 作为小值
 
@@ -21,7 +21,7 @@ if(isnull(字段名),1,0)  asc
 在排序的时候，先根据这一隐含属性进行升序排列，因为 if(isnull(字段名),0,1)相当于 if(isnull(字段名),0,1)
 asc 省略了 asc 而已，所以自然地，排序字段为 null 的那些行（隐含排序属性）会在最前
 
-# 统计分析函数
+# 2 : 统计分析函数
 
 ## day
 
@@ -92,7 +92,7 @@ CONCAT( DATE_FORMAT( NOW( ), '%Y' ), '-', MONTH ( consumption.create_time ) )
 
 ```
 
-## 一、 week（）
+## 3: week（）
 
 ### 是什么
 
@@ -164,7 +164,7 @@ CONCAT( DATE_FORMAT( NOW( ), '%Y' ), '-', MONTH ( consumption.create_time ) )
 - 周结束
   周开始加 6 天
 
-# 3: explan
+# 4: explan
 
 要了解索引 先来了解下 explan
 
@@ -248,7 +248,7 @@ null : 执行时不用访问表或者索引，如从一个索引列里选取最�
   f. Impossible where : where 语句会导致没有符合条件的行
   g. Select tables optimized away : 仅通过使用索引，可以仅从聚合函数中返回一行
 
-# 4: 索引
+# 5: 索引
 
 索引是一种特殊的文件，会占用物理存储空间
 
@@ -262,7 +262,7 @@ d. 单列索引，多列索引
 
 e. 组合索引（最左前缀）
 
-# 5: 修改数据库和表字符集
+# 6: 修改数据库和表字符集
 
 开发中遇到了不同表数据库字段的字符集编码方式不一致，导致部分索引失效的问题
 涉及的表众多，采用批量修改的方式
@@ -299,5 +299,48 @@ ORDER BY
 	alarm.create_time DESC;
 ```
 
--[function_count_官方文档](https://dev.mysql.com/doc/refman/5.6/en/group-by-functions.html#function_count)
-  
+-[function*count*官方文档](https://dev.mysql.com/doc/refman/5.6/en/group-by-functions.html#function_count)
+
+# 7: 移动 mysql 磁盘存储位置
+
+## 停止 mysql
+
+```
+systemctl stop mysqld.service
+```
+
+## 压缩 mysql 文件
+
+```sql
+tar cvpf 新的目录/mysql_backup.tgz mysql/
+```
+
+## 删除 mysql 文件
+
+```
+rm -rf mysql/
+```
+
+## 解压 mysql 文件
+
+```
+tar xvpf mysql_backup.tgz
+```
+
+## 建立软连接
+
+```
+ln -s 新的目录/mysql /var/lib
+```
+
+## 软连接详情
+
+```
+ls -il
+```
+
+## 启动 mysql
+
+```
+systemctl start mysqld.service
+```
