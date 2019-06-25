@@ -62,3 +62,21 @@ layout: post
   ```
 
   ![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20190509150622.png)
+
+## docker 容器文件
+
+```
+docker ps
+```
+
+![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20190625163035.png)
+
+```
+docker inspect -f '{{.Id}}' 9df59d231b9d
+```
+
+![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20190625163145.png)
+
+```
+docker cp ./download/backup.sql 9df59d231b9d012068fb30868ee95e1d9c9caf7b7246bcd5d7be8ca16d0577d3:/tmp/
+```
