@@ -137,6 +137,15 @@ ln -s /node-v8.0.0-linux-x64/bin/pm2 /usr/bin/pm2
 
 # 安装 jdk
 
+## yum 方式
+
+```
+// 选择版本
+yum search java|grep jdk
+// 安装
+yum install java-1.8.0-openjdk.x86_64
+```
+
 ```
 vim /etc/profile
 
@@ -224,3 +233,4 @@ tar -zxvf nginx-1.14.0.tar.gz
 make
 make install
 ```
+
