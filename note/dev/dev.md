@@ -63,7 +63,7 @@ layout: post
 
   ![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20190509150622.png)
 
-## docker 容器文件
+## 4.docker 容器文件
 
 ```
 docker ps
@@ -80,3 +80,7 @@ docker inspect -f '{{.Id}}' 9df59d231b9d
 ```
 docker cp ./download/backup.sql 9df59d231b9d012068fb30868ee95e1d9c9caf7b7246bcd5d7be8ca16d0577d3:/tmp/
 ```
+
+## 5.设备没有在线
+
+经排查，设备在断开链接后，没有发送注册包，而是直接使用了一个新的地址进行上传数据
