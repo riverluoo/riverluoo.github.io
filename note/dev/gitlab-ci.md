@@ -12,5 +12,9 @@ Specific Runner：这种 Runner 只能为指定的工程服务。拥有该工程
 ## 安装 gitlab-runner
 
 ```
+curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh | sudo bash
+```
+
+```
 yum install gitlab-ci-multi-runner
 ```
