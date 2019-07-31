@@ -18,3 +18,11 @@ curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-
 ```
 yum install gitlab-ci-multi-runner
 ```
+
+## 遇到的问题
+
+![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20190731231802.png)
+
+![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20190725165717.png)
+
+![](https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20190725165833.png)
