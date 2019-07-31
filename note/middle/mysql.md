@@ -1,4 +1,4 @@
-##  1: 按照 null 进行排序
+## 1: 按照 null 进行排序
 
 默认情况下 mysql 将 null 作为小值
 
@@ -343,4 +343,22 @@ ls -il
 
 ```
 systemctl start mysqld.service
+```
+
+## 动态行转列
+
+```sql
+SET @SQL = NULL;
+SELECT
+	GROUP_CONCAT( DISTINCT CONCAT( 'Max(IF(a.SUBJECT = ''', a.SUBJECT, ''', a.score, 0)) AS ''', a.SUBJECT, '''' ) ) INTO @SQL
+FROM
+	student_score a
+	WHERE a.type=1
+	and a.classes='一班';
+
+SET @SQL = CONCAT( 'select  any_value(a.id) as id, any_value(a.school) as school ,any_value(a.time) as time,any_value(a.student_name) as studentName,student_number as studentNumber,a.type,sum(a.score) as sumScore,', @SQL, ' from student_score a WHERE a.type=1 and a.classes="一班" group by a.student_number, a.type ' );
+PREPARE stmt
+FROM @SQL;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
 ```
