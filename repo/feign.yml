@@ -1,4 +1,0 @@
-#开启熔断器
-feign:
-  hystrix:
-    enabled: true
