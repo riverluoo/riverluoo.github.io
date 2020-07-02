@@ -13,7 +13,7 @@
 <img src="https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20200702110821.png" style="zoom:80%;" />
 
 * 工作区域
-![image-20200702111008272](/Users/riverluoo/Library/Application Support/typora-user-images/image-20200702111008272.png)
+<img src="https://riverluooo.oss-cn-beijing.aliyuncs.com/img/20200702123140.png" style="zoom:80%;" />
 
 
 ## 3: 合并分支代码到master
